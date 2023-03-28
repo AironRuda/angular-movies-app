@@ -1,1 +1,23 @@
-<p>header works!</p>
+<div class="alert alert-info">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <h3 routerLink="/home" class="cursor-pointer">
+          <img src="/assets/images/logo.png" alt="logo" height="50px" />
+        </h3>
+      </div>
+      <div class="col-md-8">
+        <form (submit)="buscarPeliculas($event)">
+          <input
+            type="text"
+            name="movieTitle"
+            class="form-control"
+            autofocus
+            placeholder="Buscar pelicula"
+            [(ngModel)]="movieTitle"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
