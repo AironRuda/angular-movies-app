@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { MoviesListComponent } from './components/movies/movies-list/movies-list.component';
 import { MovieDetailsComponent } from './components/movies/movie-details/movie-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MovieDetailsComponent } from './components/movies/movie-details/movie-d
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
