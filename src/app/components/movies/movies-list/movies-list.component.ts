@@ -8,11 +8,14 @@ import { MoviesServices } from 'src/app/services/movies.service';
 })
 export class MoviesListComponent {
 
+  movies!: any[]
+
   constructor(private moviesServices: MoviesServices) { }
 
   ngOnInit(): void {
-    this.moviesServices.searchMovies("dragon").subscribe(response => {
+    this.moviesServices.searchMovies("fullmetal").subscribe(response => {
       console.log(response);
+      this.movies = response;
     })
   }
 }
