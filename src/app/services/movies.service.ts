@@ -12,10 +12,17 @@ export class MoviesServices {
     'X-RapidAPI-Host': 'anime-db.p.rapidapi.com'
   }
   constructor(private http: HttpClient) { }
+
   searchMovies(title: string): Observable<any> {
     return this.http.get(this.urlBase + "/anime", {
       headers: this.headres, params: { page: '1', size: '20', search: title }
     })
       .pipe(map((response: any) => response.data))
+  }
+
+  searchMovieById(movieId: number): Observable<any> {
+    return this.http.get(this.urlBase + "/anime/by-id" + "/" + movieId, {
+      headers: this.headres
+    })
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MoviesServices } from 'src/app/services/movies.service';
 
 @Component({
@@ -10,12 +11,18 @@ export class MoviesListComponent {
 
   movies!: any[]
 
-  constructor(private moviesServices: MoviesServices) { }
+  constructor(
+    private moviesService: MoviesServices,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.moviesServices.searchMovies("fullmetal").subscribe(response => {
-      console.log(response);
-      this.movies = response;
+    this.activatedRoute.queryParams.subscribe((params: any) => {
+      console.log(params.q);
+      this.moviesService.searchMovies(params.q).subscribe(response => {
+        // console.log(response);
+        this.movies = response;
+      })
     })
   }
 }

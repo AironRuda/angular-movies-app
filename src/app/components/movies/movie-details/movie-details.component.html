@@ -1,1 +1,18 @@
-<p>movie-details works!</p>
+<div class="text-center" *ngIf="!movie">
+  <img src="/assets/images/loading.gif" alt="" />
+</div>
+<div class="row" *ngIf="movie">
+  <div class="col-md-4">
+    <img [src]="movie.image" [alt]="movie.title" class="card-img-top" />
+  </div>
+  <div class="col-md-8">
+    <h3 class="card-title">{{ movie.title }}</h3>
+    <h2>{{ movie.type }}</h2>
+    <p *ngIf="movie.episodes > 1">{{ movie.episodes }}</p>
+    <div class="flex">
+      <p *ngFor="let item of movie.genres">{{ item }}</p>
+    </div>
+    <p>{{ movie.synopsis }}</p>
+    <a [href]="movie.link">Learn more</a>
+  </div>
+</div>

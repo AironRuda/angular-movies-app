@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MoviesServices } from 'src/app/services/movies.service';
+import { __param } from 'tslib';
 
 @Component({
   selector: 'app-movie-details',
@@ -7,4 +10,19 @@ import { Component } from '@angular/core';
 })
 export class MovieDetailsComponent {
 
+  movie!: any
+
+  constructor(
+    private moviesService: MoviesServices,
+    private activatedRoute: ActivatedRoute
+  ) { }
+
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params: any) => {
+      this.moviesService.searchMovieById(params.movieId).subscribe(response => {
+        this.movie = response
+        console.log(response);
+      })
+    })
+  }
 }
